@@ -1,6 +1,6 @@
 /* 오프라인용: 처음 연 뒤에는 인터넷이 없어도 열린다.
    화면은 인터넷이 되면 새 판을 먼저 받고(업데이트가 바로 보이게), 안 되면 저장해 둔 판을 쓴다. */
-const CACHE = 'cell-circuit-6670f483b6';
+const CACHE = 'cell-circuit-e4e5754040';
 const FILES = ["./", "index.html", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png"];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('cell-circuit-') && k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
